@@ -1,14 +1,14 @@
 <template>
   <div class="item">
     <div class="left">
-      <img src="@/assets/goods.webp">
+      <img src="@/assets/recommend-placeholder.png" alt="Curology 护肤品（占位图）">
     </div>
     <div class="right">
-      <h3>餐具 綠吹天目</h3>
-      <p>已售104件</p>
-      <div class="price">
-        <span class="newPrice">$19.9 </span>
-        <span class="oldPrice"> $29.9</span>
+      <h3 class="name">ParaDox 防晒乳液</h3>
+      <p class="meta">已售104件</p>
+      <div class="price-row">
+        <span class="new-price">$19.9</span>
+        <span class="old-price">$19.9</span>
       </div>
     </div>
   </div>
@@ -21,34 +21,77 @@ export default {
 </script>
 
 <style scoped>
-.item{
+.item {
   display: flex;
-  border-radius: 10px;
-  margin: 10px;
-  box-shadow: 3px 3px 10px #e4e4e4;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 5px;
+  margin: 0;
+  background-color: #fff;
+  box-shadow: 3.2px 3.2px 5.333px #e4e4e4;
 }
-.left{
-  width: 120px;          /* 固定左侧图片区域宽度 */
-  height: 120px;
+
+.left {
+  flex-shrink: 0;
+  width: 128px;
+  height: 128px;
 }
-img{
-  border-radius: 10px 0 0 10px;
+
+.left img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;   /* 保持图片比例，不拉伸 */
+  border-radius: 5px 0 0 5px;
+  object-fit: cover;
 }
-.price,h3,p{
-  margin:10px 0 10px 5px ;
+
+.right {
+  flex: 1;
+  min-width: 0;
+  padding: 15px 10px 12px 17px;
+  box-sizing: border-box;
+  position: relative;
 }
-p{
-  color: rgb(179, 179, 179);
-  font-size: 12px;
+
+.name {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #000;
+  letter-spacing: -0.02em;
 }
-.newPrice{
-  font-size: larger;
+
+.meta {
+  margin: 0 0 12px;
+  color: #b3b3b3;
+  font-size: 12.8px;
+  line-height: 1.2;
+  letter-spacing: -0.06px;
 }
-.oldPrice{
-  text-decoration: line-through; /* 删除线样式 */
-  color: rgb(179, 179, 179);
-  }
+
+.price-row {
+  position: absolute;
+  left: 17px;
+  right: 10px;
+  bottom: 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.new-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.02em;
+}
+
+.old-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #b3b3b3;
+  text-decoration: line-through;
+  letter-spacing: -0.02em;
+}
 </style>
