@@ -1,7 +1,11 @@
 .DS_Store
+# packages that npm downloaded
 node_modules
 /dist
 
+# secret key file
+*.pem
+*.cer
 
 # local env files
 .env.local
