@@ -1,7 +1,8 @@
 <template>
   <div class="home">
+
     <!-- 标题导航 -->
-    <div class="title">
+    <div class="title" style="margin-left: 10px;">
       ENCH 恩栖选品
     </div>
 
@@ -15,13 +16,13 @@
 
     <!-- 轮播图 -->
     <div class="swipper">
-      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item>1</van-swipe-item>
-        <van-swipe-item>2</van-swipe-item>
-        <van-swipe-item>3</van-swipe-item>
-        <van-swipe-item>4</van-swipe-item>
-        </van-swipe>
+      <van-swipe :autoplay="3000">
+        <van-swipe-item v-for="item in bannerList" :key="item.imgName">
+          <img :src="item.imgUrl">
+        </van-swipe-item>
+      </van-swipe>
     </div>
+
     <!-- 功能导航 -->
      <div class="funcNav">
         <span>
@@ -43,40 +44,45 @@
      </div>
 
     <!-- 精选推荐/商品列表 -->
-     <div class="item">
+     <div class="itemDiv" style="margin-bottom: 60px;">
       <h2>推荐</h2>
-      <hr>
-      <GoodsItem style="margin-top: 40px;"></GoodsItem>
-      <GoodsItem></GoodsItem>
-      <GoodsItem></GoodsItem>
-      <GoodsItem></GoodsItem>
-      <GoodsItem></GoodsItem>
-     </div>
+      <GoodsItem v-for="item in productList" :key="item.goods_id" :item="item"></GoodsItem>
+      <h2>-- End --</h2><br>
+    </div>
 
   </div>
 </template>
 
 <script>
 import { getGoodsDetail } from '@/api/user'
+import GoodsItem from '@/components/GoodsItem'
 
 export default {
   name: 'homePage',
   data () {
     return {
-      searchInfo: ''
+      searchInfo: [],
+      bannerList: [],
+      productList: []
     }
   },
   async created () {
     const res = await getGoodsDetail()
     console.log(res)
+    this.bannerList = res.data.data.pageData.items[1].data
+    this.productList = res.data.data.pageData.items[6].data
+    console.log(this.productList)
+  },
+  components: {
+    GoodsItem
   }
 }
 </script>
 
 <style scoped>
 .home {
-  margin: 0 10px 0 10px;
-  /* background-color: rgb(81, 7, 7); */
+  /* margin: 0 10px 0 10px; */
+  background-color: rgb(125, 43, 43);
 }
 
 /* 标题 */
@@ -100,7 +106,7 @@ export default {
   background-color: rgb(254, 254, 254);
 }
 
-img{
+.red img{
   display: inline-block;
   margin:0 15px 0 15px;
   height:16px;
@@ -113,14 +119,10 @@ img{
 }
 
 /* 轮播图 */
-  .my-swipe .van-swipe-item {
-    color: #fff;
-    font-size: 20px;
-    /* 4:3比例轮播图 */
-    line-height: 282px;
-    text-align: center;
-    background-color: #39a9ed;
-  }
+.swipper img{
+  width: 100%;
+  object-fit: contain;
+}
 
   /* 功能导航 */
 
@@ -132,21 +134,21 @@ img{
   }
   .funcNav  img{
     height: 40px;
+    width: 40px;
   }
   .funcNav p{
     font-size: 12px;
-    color: rgb(78, 78, 78);
+    color: rgb(204, 204, 204);
   }
 
   /* 精选推荐/商品列表 */
-  .item{
-    margin-bottom: 60px;
-  }
-  .item h2{
+
+  .itemDiv h2{
     margin-top: 20px;
     margin-bottom: 10px;
     text-align: center;
     font-weight:300;
     font-size: 18px;
+    color: rgb(222, 222, 222);
   }
 </style>
