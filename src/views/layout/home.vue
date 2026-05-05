@@ -10,7 +10,7 @@
     <div class="red">
       <div class="search">
         <img src="@/assets/search.png">
-        <input type="text" name="search" v-model="searchInfo">
+        <input type="text" name="search" v-model="searchInfo" @click="$router.push('./search')">
       </div>
     </div>
 
