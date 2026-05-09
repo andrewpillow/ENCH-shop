@@ -4,26 +4,51 @@
     <!-- 商品搜索 -->
     <div class="searchBox">
       <img src="@/assets/back.svg" @click="$router.go(-1)">
-      <input type="text">
-      <button>搜索</button>
+      <input type="text" v-model="searchItem">
+      <button @click="search(searchItem)">搜索</button>
     </div>
 
     <!-- 搜索历史 -->
-     <div class="history">
+     <div class="history" v-if="searchHistory.length >= 1">
       <div class="historyTitle">
         <span>最近搜索</span>
-        <img src="@/assets/clearAll.png">
+        <img src="@/assets/clearAll.png" @click="clearHistory()">
       </div>
       <div class="historyItem">
-        <span class="item">牛奶</span>
+        <span class="item" v-for="item in searchHistory" :key="item" @click="search(item)">{{item}}</span>
       </div>
      </div>
   </div>
 </template>
 
 <script>
+import { getHisInfo, setHisInfo, removeHisInfo } from '@/utils/localStorge'
+
 export default {
-  name: 'searchPage'
+  name: 'searchPage',
+  data () {
+    return {
+      searchItem: '',
+      searchHistory: getHisInfo()
+    }
+  },
+  methods: {
+    search (key) {
+      if (this.searchHistory.indexOf(key) === -1) {
+        this.searchHistory.unshift(key)
+        this.searchItem = ''
+      } else {
+        const index = this.searchHistory.indexOf(key)
+        this.searchHistory.splice(index, 1)
+        this.searchHistory.unshift(key)
+      }
+      setHisInfo(this.searchHistory)
+    },
+    clearHistory () {
+      removeHisInfo()
+      this.searchHistory = []
+    }
+  }
 }
 </script>
 
@@ -72,6 +97,7 @@ export default {
 }
 .item{
   border-radius: 15px;
+  margin-right: 10px;
   padding: 5px 10px 5px 10px;
   box-shadow: 2px 2px 5px rgb(177, 177, 177)
 }
