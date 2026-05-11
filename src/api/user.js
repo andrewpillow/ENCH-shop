@@ -1,7 +1,7 @@
-import instance from '@/utils/request'
+import request from '@/utils/request'
 
 export const getGoodsDetail = () => {
-  return instance.get('/page/detail', {
+  return request.get('/page/detail', {
     params: {
       pageId: 0
     }

@@ -7,6 +7,7 @@ import myOrder from '@/views/myorder'
 import pay from '@/views/pay'
 import proDetail from '@/views/prodetail'
 import search from '@/views/search'
+import searchList from '@/views/search/searchList'
 
 import home from '@/views/layout/home.vue'
 import cart from '@/views/layout/cart.vue'
@@ -35,7 +36,9 @@ export const router = new VueRouter({
     { path: '/myorder', component: myOrder },
     { path: '/pay', component: pay },
     { path: '/prodetail', component: proDetail },
-    { path: '/search', component: search }
+    { path: '/search', component: search },
+    { path: '/searchlist', component: searchList }
+
   ]
 })
 
@@ -53,3 +56,15 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
+
+// 解决路由重定向uncaught error
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (location) {
+  // 调用原始方法并捕获错误
+  return originalPush.call(this, location).catch(err => err)
+}
+
+const originalReplace = VueRouter.prototype.replace
+VueRouter.prototype.replace = function replace (location) {
+  return originalReplace.call(this, location).catch(err => err)
+}

@@ -47,7 +47,7 @@
      <div class="itemDiv" style="margin-bottom: 60px;">
       <h2>推荐</h2>
       <GoodsItem v-for="item in productList" :key="item.goods_id" :item="item"></GoodsItem>
-      <h2>-- End --</h2><br>
+      <img src="@/assets/end.png" style="width: 50px;margin: 50px 0px 20px 160px;">
     </div>
 
   </div>
@@ -82,7 +82,7 @@ export default {
 <style scoped>
 .home {
   /* margin: 0 10px 0 10px; */
-  background-color: rgb(125, 43, 43);
+  /* background-color: rgb(125, 43, 43); */
 }
 
 /* 标题 */
@@ -138,7 +138,7 @@ export default {
   }
   .funcNav p{
     font-size: 12px;
-    color: rgb(204, 204, 204);
+    /* color: rgb(204, 204, 204); */
   }
 
   /* 精选推荐/商品列表 */
@@ -149,6 +149,6 @@ export default {
     text-align: center;
     font-weight:300;
     font-size: 18px;
-    color: rgb(222, 222, 222);
+    /* color: rgb(222, 222, 222); */
   }
 </style>

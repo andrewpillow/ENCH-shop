@@ -4,7 +4,7 @@
     <!-- 商品搜索 -->
     <div class="searchBox">
       <img src="@/assets/back.svg" @click="$router.go(-1)">
-      <input type="text" v-model="searchItem">
+      <input type="text" v-model="searchItem" ref="inputRef">
       <button @click="search(searchItem)">搜索</button>
     </div>
 
@@ -32,8 +32,15 @@ export default {
       searchHistory: getHisInfo()
     }
   },
+  mounted () {
+    this.$refs.inputRef.focus()
+  },
   methods: {
     search (key) {
+      if (key === '') {
+        this.$toast('忘记输入内容啦.')
+        return
+      }
       if (this.searchHistory.indexOf(key) === -1) {
         this.searchHistory.unshift(key)
         this.searchItem = ''
@@ -43,6 +50,7 @@ export default {
         this.searchHistory.unshift(key)
       }
       setHisInfo(this.searchHistory)
+      this.$router.push(`/searchlist?search=${key}`)
     },
     clearHistory () {
       removeHisInfo()
@@ -55,7 +63,7 @@ export default {
 <style scoped>
 /* 搜索框 */
 .searchBox{
-  margin-top: 70px;
+  margin-top: 20px;
   display: flex;
 }
 .searchBox img{
@@ -83,6 +91,7 @@ export default {
 /* 搜索历史 */
 .history{
   margin-left: 38px;
+  margin-right: 20px;
 }
 .historyTitle{
   line-height: 40px;
@@ -91,14 +100,16 @@ export default {
   margin-left: 13px;
   height: 13px;
 }
-.history span{
+.historyTitle span{
   font-size: 17px;
   line-height: 20px;
 }
 .item{
+  display: inline-block;
   border-radius: 15px;
   margin-right: 10px;
+  margin-bottom: 10px;
   padding: 5px 10px 5px 10px;
-  box-shadow: 2px 2px 5px rgb(177, 177, 177)
+  box-shadow: 2px 2px 5px rgb(177, 177, 177);
 }
 </style>
