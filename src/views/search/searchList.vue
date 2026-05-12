@@ -18,7 +18,7 @@
 
 <script>
 
-import { getSearchInfo } from '@/api/search'
+import { getSearchInfo } from '@/api/product'
 import GoodsItem from '@/components/GoodsItem'
 
 export default {

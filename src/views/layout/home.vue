@@ -46,7 +46,7 @@
     <!-- 精选推荐/商品列表 -->
      <div class="itemDiv" style="margin-bottom: 60px;">
       <h2>推荐</h2>
-      <GoodsItem v-for="item in productList" :key="item.goods_id" :item="item"></GoodsItem>
+      <GoodsItem v-for="item in productList" :key="item.goods_id" :item="item" ></GoodsItem>
       <img src="@/assets/end.png" style="width: 50px;margin: 50px 0px 20px 160px;">
     </div>
 
@@ -100,6 +100,8 @@ export default {
 }
 
 .search{
+  display: flex;
+  align-items: center;
   border-radius: 35px;
   margin: 7px 7px 7px 7px;
   border:1px solid;
@@ -107,9 +109,9 @@ export default {
 }
 
 .red img{
-  display: inline-block;
-  margin:0 15px 0 15px;
-  height:16px;
+  margin:0 15px 0 9px;
+  height:20px;
+  line-height: 70px;
 }
 
 .search input {

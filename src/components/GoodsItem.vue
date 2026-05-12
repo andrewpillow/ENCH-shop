@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="item" @click="$router.push(`/prodetail?product=${item.goods_id}`)">
     <div class="left">
       <img :src="item.goods_image">
     </div>

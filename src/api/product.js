@@ -7,3 +7,11 @@ export const getSearchInfo = (key) => {
     }
   })
 }
+
+export const getProductDetail = (goodsId) => {
+  return request.get('/goods/detail', {
+    params: {
+      goodsId: goodsId
+    }
+  })
+}
