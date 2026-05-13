@@ -125,20 +125,26 @@ export default {
 </script>
 
 <style scoped>
+  input::-webkit-input-placeholder {
+    font-weight: 100;
+    font-size: 14px;
+    color: black;
+  }
   button{
     border: 0;
     border-radius: 45px;
     height: 45px;
     width: 100%;
     color: white;
-    background-color: #f6ad2c;
+    background-color: black;
   }
   a{
     display: inline-block;
     width: 40%;
     text-align: right;
-    font-size: 12px;
-    color: orange;
+    font-size: 13px;
+    font-weight: 100;
+    color: rgb(0, 0, 0);
   }
   input{
     border: 0;
