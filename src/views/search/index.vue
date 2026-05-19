@@ -4,7 +4,7 @@
     <!-- 商品搜索 -->
     <div class="searchBox">
       <img src="@/assets/back.svg" @click="$router.go(-1)">
-      <input type="text" v-model="searchItem" ref="inputRef">
+      <input type="text" v-model="searchItem" ref="inputRef" @keyup.enter="search(searchItem)">
       <button @click="search(searchItem)">搜索</button>
     </div>
 

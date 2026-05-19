@@ -55,7 +55,16 @@
 
     <!-- 底部导航 -->
     <div class="btmNav">
-      <div class="left"></div>
+      <div class="left">
+        <div class="Cservice-icon">
+          <img src="@/assets/Cservice.png">
+          <span>客服</span>
+        </div>
+        <div class="Cart-icon">
+        <img src="@/assets/cart.png">
+        <span>购物车</span>
+        </div>
+      </div>
       <div class="right">
         <button style="background-color: black;color: lightgrey;" @click=" isShow = true ">加入购物车</button>
         <button style="background-color: #fff;" @click="$router.push('/pay')">立即购买</button>
@@ -194,8 +203,29 @@ export default {
   background-color: #ffffff;
   z-index: 1;
 }
-.right{
+.btmNav .left{
+  margin:0px 10px;
+  display: flex;
+  justify-content: space-around;
+  width: 35%;
+}
+.btmNav .left img{
+  width: 17px;
+  padding-bottom:5px
+}
+.btmNav .left span{
+  font-size: 10px;
+  font-weight: 700;
+}
+.btmNav .right{
   margin:0 10px;
+  width: 56%;
+}
+.Cservice-icon, .Cart-icon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }
 .right button{
   border-radius: 20px;
