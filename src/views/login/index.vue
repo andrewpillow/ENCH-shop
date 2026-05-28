@@ -2,11 +2,11 @@
   <div class="login">
     <!-- 导航栏部分 -->
     <div class="head">
-      <van-nav-bar
-        title="会员登录"
-        left-arrow
-        @click-left="$router.go(-1)"
-      />
+      <van-nav-bar title="登录">
+        <template #left>
+          <img src="@/assets/back.svg" @click="$router.go(-1)">
+        </template>
+      </van-nav-bar>
     </div>
     <div class="body">
        <div class="title">
@@ -88,7 +88,7 @@ export default {
         // const msgCode =
         await getmsgCode(this.picCode, this.picKey, this.phoneNumber)
         // console.log(msgCode)
-        this.$toast('验证码已发送，注意查收')
+        this.$toast('验证码已送达! Code:246810')
         this.timer = setInterval(() => {
           this.countDown--
           // console.log(1)
@@ -125,6 +125,10 @@ export default {
 </script>
 
 <style scoped>
+ .head img{
+    width: 20px;
+    cursor: pointer;
+  }
   input::-webkit-input-placeholder {
     font-weight: 100;
     font-size: 14px;
@@ -152,7 +156,7 @@ export default {
     height: 50px;
     width: 60% ;
   }
-  img{
+  .validateCode img{
     width: 40%;
   }
   .title{
@@ -164,4 +168,5 @@ export default {
   .body{
     margin: 0 20px;
   }
+
 </style>
