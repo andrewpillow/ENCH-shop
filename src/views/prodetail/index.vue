@@ -62,7 +62,7 @@
         </div>
         <div class="Cart-icon">
         <img src="@/assets/cart.png">
-        <span>购物车</span>
+        <span @click="$router.push('/cart')">购物车</span>
         </div>
       </div>
       <div class="right">
