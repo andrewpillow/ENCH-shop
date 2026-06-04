@@ -3,7 +3,7 @@ import { Toast } from 'vant'
 
 // 新建自定义实例
 const instance = axios.create({
-  baseURL: 'http://smart-shop.itheima.net/index.php?s=/api',
+  baseURL: 'https://smart-shop.itheima.net/index.php?s=/api',
   timeout: 5000
 })
 
