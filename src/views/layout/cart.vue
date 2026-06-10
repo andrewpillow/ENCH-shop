@@ -11,9 +11,9 @@
     </div>
 
     <!-- 购物商品项 -->
-     <div class="item">
+    <div class="item">
       <div class="left">
-        <img src="">
+        <!-- <img src=""> -->
       </div>
       <div class="right">
         <h4>产品标题1</h4>
@@ -21,7 +21,7 @@
           <span>$799.00</span>
           <div class="countBox">
             <button @click="count --" :disabled="count < 2">-</button>
-            <input type="number" v-model.number="count" @change="validCheck">
+            <input type="number" v-model.number="count">
             <button @click="count ++">+</button>
           </div>
         </div>
@@ -32,7 +32,12 @@
 
 <script>
 export default {
-  name: 'cartPage'
+  name: 'cartPage',
+  data () {
+    return {
+      count: 1
+    }
+  }
 }
 </script>
 
@@ -64,6 +69,7 @@ export default {
   padding:7px 0;
   margin-top: 20px;
   border:1px solid #e4e4e4;
+  width:88px;
 }
 .countBox button{
   border: 0px;
