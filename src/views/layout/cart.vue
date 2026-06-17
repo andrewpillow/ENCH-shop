@@ -21,7 +21,7 @@
             <div class="more">
               <button>...</button>
             </div>
-            <h4>托盤几, 黑色,45x53 厘米</h4>
+            <h4>托盤几, 黑色,45x53 厘米托盤几, 黑色,45x53 厘米托盤几, 黑色,45x53 厘米</h4>
             <div class="info">
               <span style="font-size: 19px;font-weight: 700;    ">$199.9</span>
               <div class="countBox">
@@ -129,8 +129,13 @@ export default {
 }
 
 .item .right h4{
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   width: 187px;
-  height: 50px;
+  height: 37px;
   font-weight: 400;
   font-size: 13px;
 }
