@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Swipe, SwipeItem, Button, Switch, Tabbar, TabbarItem, NavBar, Toast, Lazyload, Popup } from 'vant'
+import { Checkbox, CheckboxGroup, Swipe, SwipeItem, Button, Switch, Tabbar, TabbarItem, NavBar, Toast, Lazyload, Popup } from 'vant'
 
 Vue.use(Swipe)
 Vue.use(SwipeItem)
@@ -11,3 +11,5 @@ Vue.use(NavBar)
 Vue.use(Toast)
 Vue.use(Lazyload)
 Vue.use(Popup)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
