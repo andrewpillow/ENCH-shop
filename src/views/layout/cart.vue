@@ -13,9 +13,12 @@
     <!-- 购物商品项 -->
     <div class="item">
       <div class="left">
-        <!-- <img src=""> -->
+        <img src="@/assets/goods.webp">
       </div>
       <div class="right">
+        <div class="more">
+          <button>...</button>
+        </div>
         <h4>产品标题1</h4>
         <div class="info">
           <span>$799.00</span>
@@ -42,6 +45,7 @@ export default {
 </script>
 
 <style scoped>
+
 .title{
   display: flex;
   justify-content: space-between;
@@ -59,6 +63,25 @@ export default {
   padding:20px;
   border-bottom: 1px solid rgb(234, 234, 234);
 }
+
+.item img{
+  width: 123px;
+}
+
+.item .right{
+  margin-left: 10px;
+}
+
+.item .right .more{
+  display: flex;
+  justify-content: end;
+}
+
+.item .right .more button{
+  border:0;
+  background-color: #fff;
+}
+
 .item .info{
   display: flex;
 }
