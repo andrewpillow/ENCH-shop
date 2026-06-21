@@ -13,7 +13,7 @@
     <!-- 购物商品项 -->
     <div class="allItem">
       <div class="item">
-          <div class="checkbox" v-bind="ischecked">O</div>
+          <div class="checkbox" :class="{ 'active' : ischecked }" v-bind="ischecked" @click="ischecked = !ischecked" id="item.id">{{ ischecked ? '✓' : 'O' }}</div>
           <div class="left">
             <img src="@/assets/goods01.png">
           </div>
@@ -56,7 +56,7 @@
     </div>
 
     <!-- 结账导航 -->
-     <div class="btmNavBar">
+    <div class="btmNavBar">
 
       <div class="checkbox">
         <span>O</span>
@@ -81,7 +81,7 @@ export default {
   data () {
     return {
       count: 1,
-      ischecked: true
+      ischecked: false
     }
   }
 }
@@ -112,6 +112,13 @@ export default {
   margin-top:70px;
   padding-right:20px;
   font-size: 20px;
+  transition:all 1s ease;
+}
+
+.item .checkbox.active{
+  margin-top:70px;
+  padding-right:20px;
+  font-size: 25px;
 }
 
 .item img{
@@ -129,12 +136,12 @@ export default {
 }
 
 .item .right h4{
-
+  margin-right:20px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  width: 187px;
+  width: 167px;
   height: 37px;
   font-weight: 400;
   font-size: 13px;
