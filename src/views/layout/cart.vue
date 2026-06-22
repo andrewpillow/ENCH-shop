@@ -109,14 +109,14 @@ export default {
 }
 
 .item .checkbox{
-  margin-top:70px;
+  margin-top:60px;
   padding-right:20px;
   font-size: 20px;
   transition:all 1s ease;
 }
 
 .item .checkbox.active{
-  margin-top:70px;
+  margin-top:60px;
   padding-right:20px;
   font-size: 25px;
 }
