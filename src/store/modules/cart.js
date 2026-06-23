@@ -3,7 +3,14 @@ export default {
   namespaced: true,
   state () {
     return {
-      Array: []
+      Array: [],
+      TempArray: []
     }
+  },
+  mutations: {
+
+  },
+  action: {
+    getInfo () {}
   }
 }

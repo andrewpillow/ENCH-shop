@@ -139,6 +139,7 @@ export default {
   margin-right:20px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   width: 167px;
