@@ -1,16 +1,17 @@
 export default {
   // 开启命名空间
   namespaced: true,
+  strict: true,
   state () {
     return {
-      Array: [],
-      TempArray: []
+      cartList: []
     }
   },
   mutations: {
 
   },
   action: {
-    getInfo () {}
+    async getInfo () {
+    }
   }
 }

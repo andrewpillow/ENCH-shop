@@ -76,6 +76,9 @@
 </template>
 
 <script>
+import { getCartList } from '@/api/cart'
+import store from '@/store/index'
+
 export default {
   name: 'cartPage',
   data () {
@@ -83,6 +86,11 @@ export default {
       count: 1,
       ischecked: false
     }
+  },
+  async created () {
+    const res = await getCartList()
+    store.state.cart.cartList = res.data.data.list
+    console.log(res.data.data.list)
   }
 }
 </script>
@@ -149,6 +157,8 @@ export default {
 }
 
 .item .right .more button{
+  position: absolute;
+  right: 20px;
   border:0;
   background-color: #fff;
 }

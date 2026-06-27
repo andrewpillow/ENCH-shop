@@ -80,10 +80,6 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  /* margin: 0 10px 0 10px; */
-  /* background-color: rgb(125, 43, 43); */
-}
 
 /* 标题 */
 .title {
