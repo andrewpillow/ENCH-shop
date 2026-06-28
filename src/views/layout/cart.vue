@@ -12,47 +12,27 @@
 
     <!-- 购物商品项 -->
     <div class="allItem">
-      <div class="item">
-          <div class="checkbox" :class="{ 'active' : ischecked }" v-bind="ischecked" @click="ischecked = !ischecked" id="item.id">{{ ischecked ? '✓' : 'O' }}</div>
+      <div class="item" v-for="item in cartList" :key="item.goods_id">
+          <div class="checkbox" :class="{ 'active' : item.ischecked }" @click="item.ischecked = !item.ischecked">{{ item.ischecked ? '✓' : 'O' }}</div>
           <div class="left">
-            <img src="@/assets/goods01.png">
+            <img :src="item.goods.goods_image">
           </div>
           <div class="right">
             <div class="more">
               <button>...</button>
             </div>
-            <h4>托盤几, 黑色,45x53 厘米托盤几, 黑色,45x53 厘米托盤几, 黑色,45x53 厘米</h4>
+            <h4>{{ item.goods.goods_name }}</h4>
             <div class="info">
-              <span style="font-size: 19px;font-weight: 700;    ">$199.9</span>
+              <span style="font-size: 19px;font-weight: 700;    ">${{item.goods.goods_price_max}}</span>
               <div class="countBox">
                 <button @click="count --" :disabled="count <    2">-</button>
-                <input type="number" v-model.number="count">
+                <input type="number" v-model.number="item.goods_num">
                 <button @click="count ++">+</button>
               </div>
             </div>
           </div>
       </div>
 
-      <div class="item">
-          <div class="checkbox">✓</div>
-          <div class="left">
-            <img src="@/assets/goods02.png">
-          </div>
-          <div class="right">
-            <div class="more">
-              <button>...</button>
-            </div>
-            <h4>托盤几, 淺藍色,45x53 厘米</h4>
-            <div class="info">
-              <span style="font-size: 19px;font-weight: 700;    ">$199.9</span>
-              <div class="countBox">
-                <button @click="count --" :disabled="count <    2">-</button>
-                <input type="number" v-model.number="count">
-                <button @click="count ++">+</button>
-              </div>
-            </div>
-          </div>
-      </div>
     </div>
 
     <!-- 结账导航 -->
@@ -67,7 +47,7 @@
         <div class="totalPrice">$400</div>
 
         <div class="checkOut">
-          <button>结算 ({{count*2}})</button>
+          <button>结算 (2)</button>
         </div>
       </div>
 
@@ -76,21 +56,20 @@
 </template>
 
 <script>
-import { getCartList } from '@/api/cart'
-import store from '@/store/index'
-
+import { mapState } from 'vuex'
 export default {
   name: 'cartPage',
+  strict: true,
   data () {
     return {
-      count: 1,
-      ischecked: false
+      count: 1
     }
   },
-  async created () {
-    const res = await getCartList()
-    store.state.cart.cartList = res.data.data.list
-    console.log(res.data.data.list)
+  computed: {
+    ...mapState('cart', ['cartList'])
+  },
+  created () {
+    this.$store.dispatch('cart/getInfo')
   }
 }
 </script>
