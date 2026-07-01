@@ -13,7 +13,7 @@
     <!-- 购物商品项 -->
     <div class="allItem">
       <div class="item" v-for="item in cartList" :key="item.goods_id">
-          <div class="checkbox" :class="{ 'active' : item.ischecked }" :value="item.ischecked" @click="$store.commit('cart/changeChecked',item.ischecked)">{{ item.ischecked ? '✓' : 'O' }}</div>
+          <div class="checkbox" :class="{ 'active' : item.ischecked }" :value="item.ischecked" @click="$store.commit('cart/changeChecked',item.goods_id)">{{ item.ischecked ? '✓' : 'O' }}</div>
           <div class="left">
             <img :src="item.goods.goods_image">
           </div>

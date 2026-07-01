@@ -16,8 +16,11 @@ export default {
       state.cartList.forEach(item => {
         item.ischecked = true
       })
-    }
+    },
+    selCartList (state, id){
+      state.cartList.find(item => item.id)
 
+    }
   },
   actions: {
     async getInfo (context) {
