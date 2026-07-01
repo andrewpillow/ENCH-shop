@@ -13,7 +13,7 @@
     <!-- 购物商品项 -->
     <div class="allItem">
       <div class="item" v-for="item in cartList" :key="item.goods_id">
-          <div class="checkbox" :class="{ 'active' : item.ischecked }" @click="item.ischecked = !item.ischecked">{{ item.ischecked ? '✓' : 'O' }}</div>
+          <div class="checkbox" :class="{ 'active' : item.ischecked }" :value="item.ischecked" @click="$store.commit('cart/changeChecked',item.ischecked)">{{ item.ischecked ? '✓' : 'O' }}</div>
           <div class="left">
             <img :src="item.goods.goods_image">
           </div>
@@ -26,7 +26,7 @@
               <span style="font-size: 19px;font-weight: 700;    ">${{item.goods.goods_price_max}}</span>
               <div class="countBox">
                 <button @click="count --" :disabled="count <    2">-</button>
-                <input type="number" v-model.number="item.goods_num">
+                <input type="number" :value="item.goods_num">
                 <button @click="count ++">+</button>
               </div>
             </div>

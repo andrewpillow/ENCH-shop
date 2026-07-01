@@ -17,6 +17,7 @@ export default {
         item.ischecked = true
       })
     }
+
   },
   actions: {
     async getInfo (context) {
